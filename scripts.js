@@ -17,9 +17,12 @@ function game() {
 
     //define a function that plays one round
     function playRound(playerChoice, computerChoice) {
+
         //get choice from player and computer
         playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
         playerChoice = playerChoice.toLowerCase();
+
+        //game logic
         if (playerChoice === 'rock' || playerChoice ==='paper' || playerChoice === 'scissors') {
             computerChoice = getComputerChoice();
             if(playerChoice === computerChoice){
@@ -43,6 +46,7 @@ function game() {
             if(playerChoice === 'paper' && computerChoice === 'rock') {
                 victoryCondition = 'Victory!';
             }
+        //condition for invalid input
         } else {
             console.log("You have not entered a valid answer");
             return playRound();
@@ -68,6 +72,7 @@ function game() {
        }
     }
 
+//Message to declare a winner of the full game
 let gameWinner = (winCount > lossCount) ? 'You' : 'The computer' 
 console.log(`${gameWinner} won! You won ${winCount} and lost ${lossCount} out of 5 rounds.`);
 }
