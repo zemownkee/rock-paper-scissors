@@ -65,15 +65,16 @@ function game() {
     //for loop to play five rounds
     for(let i = 0; i < 5; i++){
       playRound()
+        
         if (victoryCondition === 'Victory!') {
-        winCount++;
-       } else if (victoryCondition === 'Defeat :(') {
-        lossCount++;
-       }
+            winCount++;
+        } else if (victoryCondition === 'Defeat :(') {
+            lossCount++;
+        }
     }
 
 //Message to declare a winner of the full game
-let gameWinner = (winCount > lossCount) ? 'You' : 'The computer' 
+let gameWinner = (winCount > lossCount) ? 'You' : (winCount == lossCount) ? "Tie" : "Computer";
 console.log(`${gameWinner} won! You won ${winCount} and lost ${lossCount} out of 5 rounds.`);
 }
 
