@@ -40,6 +40,7 @@ function playRound() {
     } else {
         console.log("You have not entered a valid answer");
     }
+    //console log for dynamic string that fills in choices plus result
 }
 //define a function that plays multiple rounds
 
