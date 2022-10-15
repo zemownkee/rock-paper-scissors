@@ -12,6 +12,7 @@ function game() {
 
     //initialize variables needed in outside of round
     let winCount = 0; 
+    let lossCount = 0;
     let victoryCondition;
 
     //define a function that plays one round
@@ -62,9 +63,13 @@ function game() {
       playRound()
         if (victoryCondition === 'Victory!') {
         winCount++;
+       } else if (victoryCondition === 'Defeat :(') {
+        lossCount++;
        }
     }
-console.log(`You won ${winCount} out of 5 rounds.`);
+
+let gameWinner = (winCount > lossCount) ? 'You' : 'The computer' 
+console.log(`${gameWinner} won! You won ${winCount} and lost ${lossCount} out of 5 rounds.`);
 }
 
 game()
