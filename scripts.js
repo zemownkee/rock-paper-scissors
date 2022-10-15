@@ -1,6 +1,4 @@
-//Ask user to play game?
-
-//get choice from computer
+//function to get choice from computer
 function getComputerChoice() {
     //random number between 0 and 2
     let opt = Math.floor(Math.random() * 3);
@@ -9,50 +7,71 @@ function getComputerChoice() {
     return choice;
 }
 
-//define a function that plays one round
-function playRound() {
-    //get choice from player and computer
-    let playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
-    playerChoice = playerChoice.toLowerCase();
-    if (playerChoice === 'rock' || playerChoice ==='paper' || playerChoice === 'scissors') {
-        let computerChoice = getComputerChoice();
-        if(playerChoice === computerChoice){
-            return 'Tie';
-        } else
-        if(playerChoice === 'rock' && computerChoice === 'scissors') {
-            return 'Victory!';
-        } else
-        if(playerChoice === 'paper' && computerChoice === 'scissors') {
-            return 'Defeat :(';
-        } else
-        if(playerChoice === 'rock' && computerChoice === 'paper') {
-            return 'Defeat :(';
-        } else
-        if(playerChoice === 'scissors' && computerChoice === 'paper') {
-            return 'Victory!';
-        }
-        if(playerChoice === 'scissors' && computerChoice === 'rock') {
-            return 'Defeat :(';
-        } else
-        if(playerChoice === 'paper' && computerChoice === 'rock') {
-            return 'Victory!';
-        }
-    } else {
-        console.log("You have not entered a valid answer");
-    }
-    //console log for dynamic string that fills in choices plus result
-}
 //define a function that plays multiple rounds
-
 function game() {
 
-    //define variable for win count
-    //for loop    
-    for(let i = 0; i < 5; i++){
-       console.log(playRound());
+    //initialize variables needed in outside of round
+    let winCount = 0; 
+    let computerChoice;
+    let playerChoice;
+    let victoryCondition;
+
+    //define a function that plays one round
+    function playRound() {
+        //get choice from player and computer
+        let playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
+        playerChoice = playerChoice.toLowerCase();
+        if (playerChoice === 'rock' || playerChoice ==='paper' || playerChoice === 'scissors') {
+            computerChoice = getComputerChoice();
+            if(playerChoice === computerChoice){
+                victoryCondition = 'Tie';
+            } else
+            if(playerChoice === 'rock' && computerChoice === 'scissors') {
+                victoryCondition = 'Victory!';
+            } else
+            if(playerChoice === 'paper' && computerChoice === 'scissors') {
+                victoryCondition = 'Defeat :(';
+            } else
+            if(playerChoice === 'rock' && computerChoice === 'paper') {
+                victoryCondition = 'Defeat :(';
+            } else
+            if(playerChoice === 'scissors' && computerChoice === 'paper') {
+                victoryCondition = 'Victory!';
+            }
+            if(playerChoice === 'scissors' && computerChoice === 'rock') {
+                victoryCondition = 'Defeat :(';
+            } else
+            if(playerChoice === 'paper' && computerChoice === 'rock') {
+                victoryCondition = 'Victory!';
+            }
+        } else {
+            console.log("You have not entered a valid answer");
+            return playRound();
+        }
+        
+        //console log for dynamic string that fills in choices plus result
+        if(victoryCondition === 'Victory!') {
+            console.log(`You won! ${playerChoice} beats ${computerChoice}`);
+        } else if (victoryCondition === 'Defeat :(') {
+            console.log(`Sorry! You Lost. ${computerChoice} beats ${playerChoice}`);
+        } else if (victoryCondition === 'Tie') {
+            console.log(`This round was a tie!`);
+        }
     }
 
+    //for loop to play five rounds
+    for(let i = 0; i < 5; i++){
+      playRound()
+        if (victoryCondition === 'Victory!') {
+        winCount++;
+       }
+    }
+console.log(`You won ${winCount} out of 5 rounds!`);
 }
 
-//Ask user to play again?
+game()
 
+//Ask user to play again?
+if(confirm("Would you like to play again?")) {
+    game();
+}
