@@ -12,14 +12,12 @@ function game() {
 
     //initialize variables needed in outside of round
     let winCount = 0; 
-    let computerChoice;
-    let playerChoice;
     let victoryCondition;
 
     //define a function that plays one round
-    function playRound() {
+    function playRound(playerChoice, computerChoice) {
         //get choice from player and computer
-        let playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
+        playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
         playerChoice = playerChoice.toLowerCase();
         if (playerChoice === 'rock' || playerChoice ==='paper' || playerChoice === 'scissors') {
             computerChoice = getComputerChoice();
@@ -66,7 +64,7 @@ function game() {
         winCount++;
        }
     }
-console.log(`You won ${winCount} out of 5 rounds!`);
+console.log(`You won ${winCount} out of 5 rounds.`);
 }
 
 game()
