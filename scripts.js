@@ -44,7 +44,6 @@ function playRound() {
 }
 //define a function that plays multiple rounds
 
-
 function game() {
 
     //define variable for win count
