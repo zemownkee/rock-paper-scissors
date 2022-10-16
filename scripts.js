@@ -20,12 +20,6 @@ function game() {
 
         //get choice from player and computer
         playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
-
-        if (playerChoice === null) {
-            alert('Pick something or you break it all :(');
-            playRound();
-        }
-
         playerChoice = playerChoice.toLowerCase();
 
         //game logic
@@ -57,6 +51,15 @@ function game() {
             alert("You have not entered a valid answer");
             return playRound();
         }
+        
+        //console log for dynamic string that fills in choices plus result
+        if(victoryCondition === 'Victory!') {
+            alert(`You won! ${playerChoice} beats ${computerChoice}`);
+        } else if (victoryCondition === 'Defeat :(') {
+            alert(`Sorry! You Lost. ${computerChoice} beats ${playerChoice}`);
+        } else if (victoryCondition === 'Tie') {
+            alert(`This round was a tie!`);
+        }
     }
 
     //for loop to play five rounds
@@ -68,25 +71,17 @@ function game() {
         } else if (victoryCondition === 'Defeat :(') {
             lossCount++;
         }
-        
-        //console log for dynamic string that fills in choices plus result
-        if(victoryCondition === 'Victory!') {
-            alert(`You won! ${playerChoice} beats ${computerChoice}.\nYou have won ${winCount}.\nThe computer has won ${lossCount}.`);
-        } else if (victoryCondition === 'Defeat :(') {
-            alert(`Sorry! You Lost. ${computerChoice} beats ${playerChoice}\nYou have won ${winCount}.\nThe computer has won ${lossCount}.`);
-        } else if (victoryCondition === 'Tie') {
-            alert(`This round was a tie!\nYou have won ${winCount}.\nThe computer has won ${lossCount}.`);
-        }
     }
 
 //Message to declare a winner of the full game
-let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "The computer won";
+let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "Computer won";
 alert(`${gameWinner}! You won ${winCount} and lost ${lossCount} out of 5 rounds.`);
-
 //Ask user to play again?
+
 if(confirm("Would you like to play again?")) {
     game();
 }
 }
 
 game()
+
