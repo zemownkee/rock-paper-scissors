@@ -20,6 +20,12 @@ function game() {
 
         //get choice from player and computer
         playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
+
+        if (playerChoice === null) {
+            alert('Pick something or you break it all :(');
+            playRound();
+        }
+
         playerChoice = playerChoice.toLowerCase();
 
         //game logic
@@ -48,7 +54,7 @@ function game() {
             }
         //condition for invalid input
         } else {
-            console.log("You have not entered a valid answer");
+            alert("You have not entered a valid answer");
             return playRound();
         }
         
@@ -76,11 +82,11 @@ function game() {
 //Message to declare a winner of the full game
 let gameWinner = (winCount > lossCount) ? 'You' : (winCount == lossCount) ? "Tie" : "Computer";
 console.log(`${gameWinner} won! You won ${winCount} and lost ${lossCount} out of 5 rounds.`);
-}
-
-game()
 
 //Ask user to play again?
 if(confirm("Would you like to play again?")) {
     game();
 }
+}
+
+game()
