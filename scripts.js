@@ -9,7 +9,6 @@ function getComputerChoice() {
 
 //define a function that plays multiple rounds
 function game() {
-
     //initialize variables needed outside of round
     let winCount = 0; 
     let lossCount = 0;
@@ -17,7 +16,6 @@ function game() {
 
     //define a function that plays one round
     function playRound() {
-
         //get choice from player and computer
         playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
         playerChoice = playerChoice.toLowerCase();
@@ -65,7 +63,6 @@ function game() {
     //for loop to play five rounds
     for(let i = 0; i < 5; i++){
       playRound()
-        
         if (victoryCondition === 'Victory!') {
             winCount++;
         } else if (victoryCondition === 'Defeat :(') {
@@ -76,10 +73,10 @@ function game() {
 //Message to declare a winner of the full game
 let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "Computer won";
 alert(`${gameWinner}! You won ${winCount} and lost ${lossCount} out of 5 rounds.`);
-//Ask user to play again?
 
+//Ask user to play again?
 if(confirm("Would you like to play again?")) {
-    game();
+    location.reload();
 }
 }
 
