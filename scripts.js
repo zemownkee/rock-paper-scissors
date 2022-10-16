@@ -16,7 +16,7 @@ function game() {
     let victoryCondition;
 
     //define a function that plays one round
-    function playRound(playerChoice, computerChoice) {
+    function playRound() {
 
         //get choice from player and computer
         playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
