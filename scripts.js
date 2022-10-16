@@ -10,7 +10,7 @@ function getComputerChoice() {
 //define a function that plays multiple rounds
 function game() {
 
-    //initialize variables needed in outside of round
+    //initialize variables needed outside of round
     let winCount = 0; 
     let lossCount = 0;
     let victoryCondition;
@@ -83,5 +83,4 @@ if(confirm("Would you like to play again?")) {
 }
 }
 
-game()
-
+game();
