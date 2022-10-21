@@ -13,7 +13,7 @@ function game() {
     let winCount = 0; 
     let lossCount = 0;
     let victoryCondition;
-    let totalRounds = 0;
+    let roundsPlayed = 0;
 
     //define a function that plays one round
     function playRound() {
@@ -62,7 +62,7 @@ function game() {
     }
 
     //for loop to play five rounds
-    for(; totalRounds < 5; totalRounds++){
+    for(; roundsPlayed < 5; roundsPlayed++){
       playRound()
         if (victoryCondition === 'Victory!') {
             winCount++;
@@ -74,7 +74,7 @@ function game() {
 
 //Message to declare a winner of the full game
 let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "Computer won";
-alert(`${gameWinner}! You won ${winCount} and lost ${lossCount} out of ${totalRounds} rounds.`);
+alert(`${gameWinner}! You won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds.`);
 
 //Ask user to play again?
 if(confirm("Would you like to play again?")) {
