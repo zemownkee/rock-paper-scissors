@@ -69,6 +69,7 @@ function game() {
         } else if (victoryCondition === 'Defeat :(') {
             lossCount++;
         }
+        //ends game loop if 'best of 5' conditions are met
         if(winCount == 3 || lossCount == 3) break;
     }
 
