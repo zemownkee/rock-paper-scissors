@@ -1,8 +1,8 @@
-//get player choice and store in variable
+//return ID of clicked element
 function getPlayerChoice() {
     const targets = document.querySelectorAll('.choice');
     targets.forEach((target) => target.addEventListener('click', () =>{
-        return(target.id);
+        console.log(target.id);
     }));
     }
 
@@ -13,6 +13,10 @@ function getComputerChoice() {
     //get string from random number
     let choice = (opt === 0) ? 'rock' : (opt === 1) ? 'paper' : 'scissors';
     return choice;
+}
+
+function startGame () {
+    
 }
 
 //define a function that plays multiple rounds
