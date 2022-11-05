@@ -1,3 +1,11 @@
+//get player choice and store in variable
+function getPlayerChoice() {
+    const targets = document.querySelectorAll('.choice');
+    targets.forEach((target) => target.addEventListener('click', () =>{
+        return(target.id);
+    }));
+    }
+
 //function to get choice from computer
 function getComputerChoice() {
     //random number between 0 and 2
@@ -17,13 +25,8 @@ function game() {
 
     //define a function that plays one round
     function playRound() {
-        //get choice from player and computer
-        playerChoice = prompt("Select your weapon: Rock, Paper, or Scissors?");
-        playerChoice = playerChoice.toLowerCase();
-
-        //game logic
-        if (playerChoice === 'rock' || playerChoice ==='paper' || playerChoice === 'scissors') {
-            computerChoice = getComputerChoice();
+            let playerChoice = getPlayerChoice();
+            let computerChoice = getComputerChoice();
             if(playerChoice === computerChoice){
                 victoryCondition = 'Tie';
             } else
@@ -45,13 +48,8 @@ function game() {
             if(playerChoice === 'paper' && computerChoice === 'rock') {
                 victoryCondition = 'Victory!';
             }
-        //condition for invalid input
-        } else {
-            alert("You have not entered a valid answer");
-            return playRound();
-        }
         
-        //console log for dynamic string that fills in choices plus result
+        //alert for dynamic string that fills in choices plus result
         if(victoryCondition === 'Victory!') {
             alert(`You won! ${playerChoice} beats ${computerChoice}`);
         } else if (victoryCondition === 'Defeat :(') {
