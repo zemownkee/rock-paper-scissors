@@ -1,0 +1,41 @@
+.hidden {
+    display: none;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+.header {
+    
+}
+
+.instructions {
+    text-align: center;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choices {
+    display: flex;
+    justify-content: auto;
+    align-content: center;
+    gap: 2ch;
+}
+
+.choice {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 12px;
+}
+
+img {
+    height: 250px;
+}

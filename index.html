@@ -4,12 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-    <h1>Open console to view output</h1>
-    <p>if your game gets interrupted, you can launch the game by entering game() into the console!</p>
-    <script src="scripts.js">
-    </script>
+<div class="page">
+    <div class="header">
+        <h1>Rock, Paper Scissors</h1>
+    </div>
+    <div class="content">
+        <div class="instructions">
+            <p>Choose your weapon! Best out of five rounds wins!</p>
+        </div>
+        <div class="choices">
+            <div class="choice" id="rock">
+                <img src="images/rock.svg">
+            </div>
+            <div class="choice" id="paper">
+                <img src="images/paper.svg">
+            </div>
+            <div class="choice" id="scissors">
+                <img src="images/scissors.svg">
+            </div>
+        </div>
+        <div class="results"> </div>
+    </div> 
+    <div class="footer">
+        <p>All emojis designed by OpenMoji – the open-source emoji and icon project. License: CC BY-SA 4.0</p>
+    </div>
+</div>
+
+    <script src="ui-scripts.js"> </script>
 </body>
 </html>
