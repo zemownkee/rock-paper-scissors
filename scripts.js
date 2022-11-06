@@ -1,3 +1,13 @@
+//declare global variables for tracking plays
+let winCount = 0; 
+let lossCount = 0;
+let victoryCondition;
+let roundsPlayed = 0;
+
+results = document.querySelector(".feedback");
+results.textContent = `${victoryCondition}`;
+
+
 //return ID of clicked element
 function getPlayerChoice() {
     const targets = document.querySelectorAll('.choice');
@@ -21,11 +31,6 @@ function getComputerChoice() {
 
 //define a function that plays multiple rounds
 function game() {
-    //initialize variables needed outside of round
-    let winCount = 0; 
-    let lossCount = 0;
-    let victoryCondition;
-    let roundsPlayed = 0;
 
     //define a function that plays one round
     function playRound() {
@@ -63,7 +68,7 @@ function game() {
         }
     }
 
-    //for loop to play five rounds
+
     for(; roundsPlayed < 5; roundsPlayed++){
       playRound()
         if (victoryCondition === 'Victory!') {
