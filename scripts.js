@@ -15,9 +15,9 @@ function getComputerChoice() {
     return choice;
 }
 
-function startGame () {
-    
-}
+//get command to start game
+//display output from each round
+//display end results (modal?)
 
 //define a function that plays multiple rounds
 function game() {
