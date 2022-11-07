@@ -12,6 +12,11 @@ const startButton = document.querySelector('.start-button');
 const targets = document.querySelectorAll('.choice');
 const targetArray = [...targets];
 startButton.addEventListener('click', gameTime);
+startButton.addEventListener('touchstart', gameTime);
+targets.forEach((target) => target.addEventListener('touchstart', () => {
+    playerChoice = target.id;
+    playRound();
+}));
 targets.forEach((target) => target.addEventListener('click', () => {
     playerChoice = target.id;
     playRound();
