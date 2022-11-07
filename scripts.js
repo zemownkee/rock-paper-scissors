@@ -57,10 +57,6 @@ function endGame() {
 
 //show results at end offor each round
 function showResults (playerChoice, computerChoice) {
-    //alert for dynamic string that fills in choices plus result
-    if(winCount == 3 || lossCount == 3 || roundsPlayed == 5) {
-        endGame();
-    } else {
         if(victoryCondition === 'Victory!') {
             results.textContent = `You won! ${playerChoice} beats ${computerChoice} 
             \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
@@ -72,7 +68,7 @@ function showResults (playerChoice, computerChoice) {
             \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } 
 }    
-}
+
 
 //function that plays one round
 function playRound(choice) {
@@ -109,4 +105,8 @@ function playRound(choice) {
     roundsPlayed++;
 
     showResults(playerChoice, computerChoice);
+
+    if(winCount == 3 || lossCount == 3 || roundsPlayed == 5) {
+        endGame();
+    }
 }
