@@ -50,20 +50,20 @@ function getComputerChoice() {
 
 //declare end of game
 function endGame() {
-    let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "Computer won";
+    let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "tie" : "Computer won";
     results.innerHTML = `${gameWinner}! <br>You won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds.`;
     resetGame();
 }
 
 //show results at end offor each round
 function showResults (playerChoice, computerChoice) {
-        if(victoryCondition === 'Victory!') {
+        if(victoryCondition === 'victory') {
             results.innerHTML = `You won! <br>${playerChoice} beats ${computerChoice} 
             <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
-        } else if (victoryCondition === 'Defeat :(') {
+        } else if (victoryCondition === 'defeat') {
             results.innerHTML = `Sorry! You Lost.<br> ${computerChoice} beats ${playerChoice}
             <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
-        } else if (victoryCondition === 'Tie') {
+        } else if (victoryCondition === 'tie') {
             results.innerHTML = `This round was a tie! 
             <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } 
@@ -74,31 +74,31 @@ function showResults (playerChoice, computerChoice) {
 function playRound() {
     let computerChoice = getComputerChoice();
     if(playerChoice === computerChoice){
-        victoryCondition = 'Tie';
+        victoryCondition = 'tie';
     } else
     if(playerChoice === 'Rock' && computerChoice === 'Scissors') {
-        victoryCondition = 'Victory!';
+        victoryCondition = 'victory';
     } else
     if(playerChoice === 'Paper' && computerChoice === 'Scissors') {
-        victoryCondition = 'Defeat :(';
+        victoryCondition = 'defeat';
     } else
     if(playerChoice === 'Rock' && computerChoice === 'Paper') {
-        victoryCondition = 'Defeat :(';
+        victoryCondition = 'defeat';
     } else
     if(playerChoice === 'Scissors' && computerChoice === 'Paper') {
-        victoryCondition = 'Victory!';
+        victoryCondition = 'victory';
     }
     if(playerChoice === 'Scissors' && computerChoice === 'Rock') {
-        victoryCondition = 'Defeat :(';
+        victoryCondition = 'defeat';
     } else
     if(playerChoice === 'Paper' && computerChoice === 'Rock') {
-        victoryCondition = 'Victory!';
+        victoryCondition = 'victory';
     }
 
     //increment counters
-    if (victoryCondition === 'Victory!') {
+    if (victoryCondition === 'victory') {
         winCount++;
-    } else if (victoryCondition === 'Defeat :(') {
+    } else if (victoryCondition === 'defeat') {
         lossCount++;
     }
     roundsPlayed++;
