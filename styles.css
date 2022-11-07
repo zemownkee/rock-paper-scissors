@@ -44,6 +44,7 @@ body {
     background-color: darkgray;
     margin: 30px auto;
     padding: .5ch 2ch;
+    font-size: 18px;
 }
 .content {
     display: flex;
@@ -64,7 +65,7 @@ body {
 
 .choice {
     display: flex;
-    flex: 0 1 0;
+    flex: 1 1 0;
     flex-direction: column;
     gap: 3ch;
 }
@@ -72,6 +73,11 @@ body {
 img {
     height: 200px;
     filter: drop-shadow(2px 2px 2px rgb(0 0 0 /0.6));
+}
+
+img:hover {
+    transition: 0.35s;
+    scale: 1.05;
 }
 
 .footer {
@@ -102,4 +108,9 @@ img {
 .start-button:active {
     box-shadow: none;
     border: none;
+}
+
+.start-button:hover {
+    transition: 0.35s;
+    scale: 1.05;
 }
