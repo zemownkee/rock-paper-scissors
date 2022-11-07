@@ -3,18 +3,41 @@ let winCount = 0;
 let lossCount = 0;
 let victoryCondition;
 let roundsPlayed = 0;
+let currentSelection;
+let playerChoice;
 
-results = document.querySelector(".feedback");
-results.textContent = `${victoryCondition}`;
+//set document references
+const results = document.querySelector('.feedback');
+const startButton = document.querySelector('.start-button');
+const targets = document.querySelectorAll('.choice');
+const targetArray = [...targets];
+startButton.addEventListener('click', gameTime);
+targets.forEach((target) => target.addEventListener('click', () => {
+    playerChoice = target.id;
+    playRound(playerChoice);
+}));
 
+//format document for in game content
+function gameTime() {
+    //set page to "game mode"
+    startButton.classList.toggle("hidden");
+    results.classList.remove("hidden");
+    // targets.classList.toggle('hidden');
+    targetArray.forEach(item => item.classList.toggle('hidden'));
+    results.textContent = 'Choose Your Weapon!';
+}
 
-//return ID of clicked element
-function getPlayerChoice() {
-    const targets = document.querySelectorAll('.choice');
-    targets.forEach((target) => target.addEventListener('click', () =>{
-        console.log(target.id);
-    }));
-    }
+//reset all counters and game variables
+function resetGame() {
+    winCount = 0; 
+    lossCount = 0;
+    victoryCondition = undefined;
+    roundsPlayed = 0;
+    currentSelection = undefined;
+    playerChoice = undefined;
+    startButton.classList.toggle("hidden")
+    targetArray.forEach(item => item.classList.toggle('hidden'));
+}
 
 //function to get choice from computer
 function getComputerChoice() {
@@ -25,69 +48,65 @@ function getComputerChoice() {
     return choice;
 }
 
-//get command to start game
-//display output from each round
-//display end results (modal?)
+//declare end of game
+function endGame() {
+    let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "Computer won";
+    results.textContent = `${gameWinner}! You won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds.`;
+    resetGame();
+}
 
-//define a function that plays multiple rounds
-function game() {
-
-    //define a function that plays one round
-    function playRound() {
-            let playerChoice = getPlayerChoice();
-            let computerChoice = getComputerChoice();
-            if(playerChoice === computerChoice){
-                victoryCondition = 'Tie';
-            } else
-            if(playerChoice === 'rock' && computerChoice === 'scissors') {
-                victoryCondition = 'Victory!';
-            } else
-            if(playerChoice === 'paper' && computerChoice === 'scissors') {
-                victoryCondition = 'Defeat :(';
-            } else
-            if(playerChoice === 'rock' && computerChoice === 'paper') {
-                victoryCondition = 'Defeat :(';
-            } else
-            if(playerChoice === 'scissors' && computerChoice === 'paper') {
-                victoryCondition = 'Victory!';
-            }
-            if(playerChoice === 'scissors' && computerChoice === 'rock') {
-                victoryCondition = 'Defeat :(';
-            } else
-            if(playerChoice === 'paper' && computerChoice === 'rock') {
-                victoryCondition = 'Victory!';
-            }
-        
-        //alert for dynamic string that fills in choices plus result
+//show results at end offor each round
+function showResults (playerChoice, computerChoice) {
+    //alert for dynamic string that fills in choices plus result
+    if(winCount == 3 || lossCount == 3 || roundsPlayed == 5) {
+        endGame();
+    } else {
         if(victoryCondition === 'Victory!') {
-            alert(`You won! ${playerChoice} beats ${computerChoice}`);
+            results.textContent = `You won! ${playerChoice} beats ${computerChoice} 
+            \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } else if (victoryCondition === 'Defeat :(') {
-            alert(`Sorry! You Lost. ${computerChoice} beats ${playerChoice}`);
+            results.textContent = `Sorry! You Lost. ${computerChoice} beats ${playerChoice}
+            \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } else if (victoryCondition === 'Tie') {
-            alert(`This round was a tie!`);
-        }
-    }
-
-
-    for(; roundsPlayed < 5; roundsPlayed++){
-      playRound()
-        if (victoryCondition === 'Victory!') {
-            winCount++;
-        } else if (victoryCondition === 'Defeat :(') {
-            lossCount++;
-        }
-        //ends game loop if 'best of 5' conditions are met
-        if(winCount == 3 || lossCount == 3) break;
-    }
-
-//Message to declare a winner of the full game
-let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "Computer won";
-alert(`${gameWinner}! You won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds.`);
-
-//Ask user to play again?
-if(confirm("Would you like to play again?")) {
-    location.reload();
-}
+            results.textContent = `This round was a tie! 
+            \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
+        } 
+}    
 }
 
-game();
+//function that plays one round
+function playRound(choice) {
+    let yourChoice = choice;
+    let computerChoice = getComputerChoice();
+    if(playerChoice === computerChoice){
+        victoryCondition = 'Tie';
+    } else
+    if(playerChoice === 'rock' && computerChoice === 'scissors') {
+        victoryCondition = 'Victory!';
+    } else
+    if(playerChoice === 'paper' && computerChoice === 'scissors') {
+        victoryCondition = 'Defeat :(';
+    } else
+    if(playerChoice === 'rock' && computerChoice === 'paper') {
+        victoryCondition = 'Defeat :(';
+    } else
+    if(playerChoice === 'scissors' && computerChoice === 'paper') {
+        victoryCondition = 'Victory!';
+    }
+    if(playerChoice === 'scissors' && computerChoice === 'rock') {
+        victoryCondition = 'Defeat :(';
+    } else
+    if(playerChoice === 'paper' && computerChoice === 'rock') {
+        victoryCondition = 'Victory!';
+    }
+
+    //increment counters
+    if (victoryCondition === 'Victory!') {
+        winCount++;
+    } else if (victoryCondition === 'Defeat :(') {
+        lossCount++;
+    }
+    roundsPlayed++;
+
+    showResults(playerChoice, computerChoice);
+}
