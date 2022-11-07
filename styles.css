@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: lightgray;
+    background-color: whitesmoke;
 }
 
 .hidden {
@@ -12,13 +12,15 @@ body {
 }
 
 .feedback, .start-button {
-    box-shadow: 1px 1px 2px black;
+    box-shadow: 1px 1px black;
 }
 
 .page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100vw;
+
 }
 
 .header {
@@ -29,7 +31,7 @@ body {
     margin-top: 0px;
     margin-bottom: 30px;
     padding: 10px 200px;
-    background-color: darkgray;
+    background-color: lightgray;
     position: fixed;
     top: 0;
     width: 100%
@@ -41,7 +43,7 @@ body {
 .feedback {
     text-align: center;
     flex: 0 1 0;
-    background-color: darkgray;
+    background-color: lightgray;
     margin: 30px auto;
     padding: .5ch 2ch;
     font-size: 18px;
@@ -52,6 +54,7 @@ body {
     justify-content: center;
     justify-self: center;
     flex: 1 1 auto;
+    padding: 0px;
 }
 
 .choices {
@@ -82,16 +85,21 @@ img:hover {
 
 .footer {
     margin-top: auto;
+    padding: 8px 2ch;
     text-align: center;
-    justify-self: end;
-    background-color: darkgray;
+    align-content: center;
+    justify-content: center;
+    background-color: lightgray;
     position: fixed;
-    bottom: 0;
-    width: 100%
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    width: 100vw;
 }
 
 .start-button {
-    background-color: darkgray;
+    background-color: lightgray;
     border: none;
     padding: 15px 32px;
     text-align: center;
