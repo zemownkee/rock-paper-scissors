@@ -69,7 +69,6 @@ function showResults (playerChoice, computerChoice) {
         } 
 }    
 
-
 //function that plays one round
 function playRound() {
     let computerChoice = getComputerChoice();
