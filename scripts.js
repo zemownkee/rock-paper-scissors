@@ -14,7 +14,7 @@ const targetArray = [...targets];
 startButton.addEventListener('click', gameTime);
 targets.forEach((target) => target.addEventListener('click', () => {
     playerChoice = target.id;
-    playRound(playerChoice);
+    playRound();
 }));
 
 //format document for in game content
@@ -71,8 +71,7 @@ function showResults (playerChoice, computerChoice) {
 
 
 //function that plays one round
-function playRound(choice) {
-    let yourChoice = choice;
+function playRound() {
     let computerChoice = getComputerChoice();
     if(playerChoice === computerChoice){
         victoryCondition = 'Tie';
@@ -103,9 +102,10 @@ function playRound(choice) {
         lossCount++;
     }
     roundsPlayed++;
-
+    
     showResults(playerChoice, computerChoice);
 
+    //check if game is over at end of round
     if(winCount == 3 || lossCount == 3 || roundsPlayed == 5) {
         endGame();
     }
