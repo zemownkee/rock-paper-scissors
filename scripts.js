@@ -44,28 +44,28 @@ function getComputerChoice() {
     //random number between 0 and 2
     let opt = Math.floor(Math.random() * 3);
     //get string from random number
-    let choice = (opt === 0) ? 'rock' : (opt === 1) ? 'paper' : 'scissors';
+    let choice = (opt === 0) ? 'Rock' : (opt === 1) ? 'Paper' : 'Scissors';
     return choice;
 }
 
 //declare end of game
 function endGame() {
     let gameWinner = (winCount > lossCount) ? 'You won' : (winCount == lossCount) ? "Tie" : "Computer won";
-    results.textContent = `${gameWinner}! You won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds.`;
+    results.innerHTML = `${gameWinner}! <br>You won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds.`;
     resetGame();
 }
 
 //show results at end offor each round
 function showResults (playerChoice, computerChoice) {
         if(victoryCondition === 'Victory!') {
-            results.textContent = `You won! ${playerChoice} beats ${computerChoice} 
-            \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
+            results.innerHTML = `You won! <br>${playerChoice} beats ${computerChoice} 
+            <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } else if (victoryCondition === 'Defeat :(') {
-            results.textContent = `Sorry! You Lost. ${computerChoice} beats ${playerChoice}
-            \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
+            results.innerHTML = `Sorry! You Lost.<br> ${computerChoice} beats ${playerChoice}
+            <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } else if (victoryCondition === 'Tie') {
-            results.textContent = `This round was a tie! 
-            \b You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
+            results.innerHTML = `This round was a tie! 
+            <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } 
 }    
 
@@ -76,22 +76,22 @@ function playRound() {
     if(playerChoice === computerChoice){
         victoryCondition = 'Tie';
     } else
-    if(playerChoice === 'rock' && computerChoice === 'scissors') {
+    if(playerChoice === 'Rock' && computerChoice === 'Scissors') {
         victoryCondition = 'Victory!';
     } else
-    if(playerChoice === 'paper' && computerChoice === 'scissors') {
+    if(playerChoice === 'Paper' && computerChoice === 'Scissors') {
         victoryCondition = 'Defeat :(';
     } else
-    if(playerChoice === 'rock' && computerChoice === 'paper') {
+    if(playerChoice === 'Rock' && computerChoice === 'Paper') {
         victoryCondition = 'Defeat :(';
     } else
-    if(playerChoice === 'scissors' && computerChoice === 'paper') {
+    if(playerChoice === 'Scissors' && computerChoice === 'Paper') {
         victoryCondition = 'Victory!';
     }
-    if(playerChoice === 'scissors' && computerChoice === 'rock') {
+    if(playerChoice === 'Scissors' && computerChoice === 'Rock') {
         victoryCondition = 'Defeat :(';
     } else
-    if(playerChoice === 'paper' && computerChoice === 'rock') {
+    if(playerChoice === 'Paper' && computerChoice === 'Rock') {
         victoryCondition = 'Victory!';
     }
 
