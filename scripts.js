@@ -12,6 +12,11 @@ const startButton = document.querySelector('.start-button');
 const targets = document.querySelectorAll('.choice');
 const targetArray = [...targets];
 startButton.addEventListener('click', gameTime);
+startButton.addEventListener('touchstart', gameTime);
+targets.forEach((target) => target.addEventListener('touchstart', () => {
+    playerChoice = target.id;
+    playRound();
+}));
 targets.forEach((target) => target.addEventListener('click', () => {
     playerChoice = target.id;
     playRound();
@@ -61,7 +66,7 @@ function showResults (playerChoice, computerChoice) {
             results.innerHTML = `You won! <br>${playerChoice} beats ${computerChoice} 
             <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } else if (victoryCondition === 'defeat') {
-            results.innerHTML = `Sorry! You Lost.<br> ${computerChoice} beats ${playerChoice}
+            results.innerHTML = `Oof. You Lost.<br> ${computerChoice} beats ${playerChoice}
             <br> You have won ${winCount} and lost ${lossCount} out of ${roundsPlayed} rounds played. `;
         } else if (victoryCondition === 'tie') {
             results.innerHTML = `This round was a tie! 
