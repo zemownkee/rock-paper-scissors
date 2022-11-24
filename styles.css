@@ -1,10 +1,11 @@
 * {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
+    color:aliceblue;
 }
 
 body {
-    background-color: whitesmoke;
+    background-color: lightcyan;
 }
 
 .hidden {
@@ -31,7 +32,7 @@ body {
     margin-top: 0px;
     margin-bottom: 30px;
     padding: 10px 200px;
-    background-color: lightgray;
+    background-color: darkcyan;
     position: fixed;
     top: 0;
     width: 100%
@@ -43,7 +44,7 @@ body {
 .feedback {
     text-align: center;
     flex: 0 1 0;
-    background-color: lightgray;
+    background-color: darkcyan;
     margin: 30px auto;
     padding: .5ch 2ch;
     font-size: 18px;
@@ -89,7 +90,7 @@ img:hover {
     text-align: center;
     align-content: center;
     justify-content: center;
-    background-color: lightgray;
+    background-color: darkcyan;
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -99,7 +100,7 @@ img:hover {
 }
 
 .start-button {
-    background-color: lightgray;
+    background-color: darkcyan;
     border: none;
     padding: 15px 32px;
     text-align: center;
@@ -109,7 +110,7 @@ img:hover {
     border: 1px solid rgb(80, 80, 80);
     margin: 4px auto;
     flex: 0 1 1;
-    border-radius: 10px;
+    border-radius: 2px;
     font-weight: 500;
 }
 
